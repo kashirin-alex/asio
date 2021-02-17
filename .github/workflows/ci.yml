@@ -20,6 +20,8 @@ jobs:
         handler-tracking: ['']
         boost: ['']
         boost-url: ['']
+        cxx-flags-ext1: ['-Wcast-align -Wnon-virtual-dtor -Wnoexcept -Wuseless-cast -Wold-style-cast -Wstrict-null-sentinel -Wzero-as-null-pointer-constant -Wlogical-op']
+        cxx-flags-ext2: ['']
         exclude:
           # Newer compilers don't run on ubuntu 18.04
           - runs-on: ubuntu-18.04
@@ -123,6 +125,7 @@ jobs:
             compiler: g++-10
             cxx-std: c++2a
             optim-level: -O2
+			cxx-flags-ext2: -Wsuggest-override -Wnull-dereference -Wduplicated-branches -Wduplicated-cond
           #
           # Linux / g++-10 -std=c++17 / -O2 / boost 1.73
           #
@@ -133,6 +136,7 @@ jobs:
             optim-level: -O2
             with-boost: --with-boost=$GITHUB_WORKSPACE/boost_1_73_0
             boost-url: https://sourceforge.net/projects/boost/files/boost/1.73.0/boost_1_73_0.tar.bz2/download
+			cxx-flags-ext2: -Wsuggest-override -Wnull-dereference -Wduplicated-branches -Wduplicated-cond
           #
           # Linux / g++-9 -std=c++14 / -O0 / standalone / separate compilation
           #
@@ -142,6 +146,7 @@ jobs:
             cxx-std: c++14
             separate-compilation: --enable-separate-compilation
             optim-level: -O0
+			cxx-flags-ext2: -Wsuggest-override -Wnull-dereference -Wduplicated-branches -Wduplicated-cond
           #
           # Linux / g++-6 / -O2 / standalone
           #
@@ -267,6 +272,7 @@ jobs:
             compiler: clang++-10
             cxx-std: c++2a
             optim-level: -O2
+			cxx-flags-ext2: -Wsuggest-override -Wnull-dereference -Wduplicated-branches -Wduplicated-cond
           #
           # Linux / clang++-10 -std=c++11 / -O0 / standalone / separate compilation
           #
@@ -276,6 +282,7 @@ jobs:
             cxx-std: c++11
             separate-compilation: --enable-separate-compilation
             optim-level: -O0
+			cxx-flags-ext2: -Wsuggest-override -Wnull-dereference -Wduplicated-branches -Wduplicated-cond
           #
           # Linux / clang++-3.8 -std=c++11 / -O2 / standalone
           #
@@ -303,6 +310,7 @@ jobs:
             compiler: g++
             cxx-std: c++2a -fcoroutines-ts
             optim-level: -O2
+			cxx-flags-ext2: -Wsuggest-override -Wnull-dereference -Wduplicated-branches -Wduplicated-cond
           #
           # macOS / c++11 / -O2 / standalone
           #
@@ -351,9 +359,10 @@ jobs:
             with-boost: --with-boost=$GITHUB_WORKSPACE/boost_1_64_0
             boost-url: https://sourceforge.net/projects/boost/files/boost/1.64.0/boost_1_64_0.tar.bz2/download
     runs-on: ${{ matrix.runs-on }}
+    
     env:
       CXX: ${{ matrix.compiler }}
-      CXXFLAGS: -std=${{ matrix.cxx-std }} ${{ matrix.optim-level }} -Wall -Wextra ${{ matrix.no-deprecated }} ${{ matrix.select-reactor }} ${{ matrix.handler-tracking }} -Wcast-align -Wnon-virtual-dtor -Wnoexcept -Wsuggest-override -Wuseless-cast -Wold-style-cast -Wnull-dereference -Wstrict-null-sentinel -Wzero-as-null-pointer-constant -Wduplicated-branches -Wduplicated-cond -Wlogical-op
+      CXXFLAGS: -std=${{ matrix.cxx-std }} ${{ matrix.optim-level }} -Wall -Wextra ${{ matrix.cxx-flags-ext1 }} ${{ matrix.cxx-flags-ext2 }} ${{ matrix.no-deprecated }} ${{ matrix.select-reactor }} ${{ matrix.handler-tracking }}
     steps:
     - uses: actions/checkout@v2
     - name: Install autotools
