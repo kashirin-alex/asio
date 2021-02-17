@@ -2,7 +2,7 @@ name: asio CI
 
 on:
   push:
-    branches: [ master, citest-* ]
+    branches: [ citest-*, extended-warnings ]
 
 jobs:
   build:
@@ -353,7 +353,7 @@ jobs:
     runs-on: ${{ matrix.runs-on }}
     env:
       CXX: ${{ matrix.compiler }}
-      CXXFLAGS: -std=${{ matrix.cxx-std }} ${{ matrix.optim-level }} -Wall -Wextra ${{ matrix.no-deprecated }} ${{ matrix.select-reactor }} ${{ matrix.handler-tracking }}
+      CXXFLAGS: -std=${{ matrix.cxx-std }} ${{ matrix.optim-level }} -Wall -Wextra ${{ matrix.no-deprecated }} ${{ matrix.select-reactor }} ${{ matrix.handler-tracking }} -Wcast-align -Wnon-virtual-dtor -Wnoexcept -Wsuggest-override -Wuseless-cast -Wold-style-cast -Wnull-dereference -Wstrict-null-sentinel -Wzero-as-null-pointer-constant -Wduplicated-branches -Wduplicated-cond -Wlogical-op
     steps:
     - uses: actions/checkout@v2
     - name: Install autotools
