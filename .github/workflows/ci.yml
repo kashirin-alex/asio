@@ -272,7 +272,7 @@ jobs:
             compiler: clang++-10
             cxx-std: c++2a
             optim-level: -O2
-            cxx-flags-ext2: -Wsuggest-override -Wnull-dereference -Wduplicated-branches -Wduplicated-cond
+            cxx-flags-ext2: -Wnull-dereference
           #
           # Linux / clang++-10 -std=c++11 / -O0 / standalone / separate compilation
           #
@@ -282,7 +282,7 @@ jobs:
             cxx-std: c++11
             separate-compilation: --enable-separate-compilation
             optim-level: -O0
-            cxx-flags-ext2: -Wsuggest-override -Wnull-dereference -Wduplicated-branches -Wduplicated-cond
+            cxx-flags-ext2: -Wnull-dereference
           #
           # Linux / clang++-3.8 -std=c++11 / -O2 / standalone
           #
