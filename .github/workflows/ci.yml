@@ -125,7 +125,7 @@ jobs:
             compiler: g++-10
             cxx-std: c++2a
             optim-level: -O2
-			cxx-flags-ext2: -Wsuggest-override -Wnull-dereference -Wduplicated-branches -Wduplicated-cond
+            cxx-flags-ext2: -Wsuggest-override -Wnull-dereference -Wduplicated-branches -Wduplicated-cond
           #
           # Linux / g++-10 -std=c++17 / -O2 / boost 1.73
           #
@@ -136,7 +136,7 @@ jobs:
             optim-level: -O2
             with-boost: --with-boost=$GITHUB_WORKSPACE/boost_1_73_0
             boost-url: https://sourceforge.net/projects/boost/files/boost/1.73.0/boost_1_73_0.tar.bz2/download
-			cxx-flags-ext2: -Wsuggest-override -Wnull-dereference -Wduplicated-branches -Wduplicated-cond
+            cxx-flags-ext2: -Wsuggest-override -Wnull-dereference -Wduplicated-branches -Wduplicated-cond
           #
           # Linux / g++-9 -std=c++14 / -O0 / standalone / separate compilation
           #
@@ -146,7 +146,7 @@ jobs:
             cxx-std: c++14
             separate-compilation: --enable-separate-compilation
             optim-level: -O0
-			cxx-flags-ext2: -Wsuggest-override -Wnull-dereference -Wduplicated-branches -Wduplicated-cond
+            cxx-flags-ext2: -Wsuggest-override -Wnull-dereference -Wduplicated-branches -Wduplicated-cond
           #
           # Linux / g++-6 / -O2 / standalone
           #
@@ -272,7 +272,7 @@ jobs:
             compiler: clang++-10
             cxx-std: c++2a
             optim-level: -O2
-			cxx-flags-ext2: -Wsuggest-override -Wnull-dereference -Wduplicated-branches -Wduplicated-cond
+            cxx-flags-ext2: -Wsuggest-override -Wnull-dereference -Wduplicated-branches -Wduplicated-cond
           #
           # Linux / clang++-10 -std=c++11 / -O0 / standalone / separate compilation
           #
@@ -282,7 +282,7 @@ jobs:
             cxx-std: c++11
             separate-compilation: --enable-separate-compilation
             optim-level: -O0
-			cxx-flags-ext2: -Wsuggest-override -Wnull-dereference -Wduplicated-branches -Wduplicated-cond
+            cxx-flags-ext2: -Wsuggest-override -Wnull-dereference -Wduplicated-branches -Wduplicated-cond
           #
           # Linux / clang++-3.8 -std=c++11 / -O2 / standalone
           #
@@ -310,7 +310,7 @@ jobs:
             compiler: g++
             cxx-std: c++2a -fcoroutines-ts
             optim-level: -O2
-			cxx-flags-ext2: -Wsuggest-override -Wnull-dereference -Wduplicated-branches -Wduplicated-cond
+            cxx-flags-ext2: -Wsuggest-override -Wnull-dereference -Wduplicated-branches -Wduplicated-cond
           #
           # macOS / c++11 / -O2 / standalone
           #
